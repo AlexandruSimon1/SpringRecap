@@ -1,9 +1,14 @@
 package com.example.demo.entities;
 
-
 import com.example.demo.entities.enums.CarShape;
 import com.example.demo.entities.enums.GearType;
 
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
+@Entity
+@PrimaryKeyJoinColumn(name = "id")
 public class Car extends Vehicle{
     private int topSpeed;
     private GearType gearType;

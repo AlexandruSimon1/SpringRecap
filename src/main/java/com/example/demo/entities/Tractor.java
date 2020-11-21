@@ -1,6 +1,11 @@
 package com.example.demo.entities;
 
-public class Tractor extends Vehicle{
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+
+@Entity
+@PrimaryKeyJoinColumn(name = "id")
+public class Tractor extends Vehicle {
     private int cylindricalCapacity;
 
     public Tractor() {

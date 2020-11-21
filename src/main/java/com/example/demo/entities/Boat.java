@@ -1,5 +1,10 @@
 package com.example.demo.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+
+@Entity
+@PrimaryKeyJoinColumn(name = "id")
 public class Boat extends Vehicle{
     private String horsePower;
 

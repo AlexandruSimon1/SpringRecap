@@ -3,7 +3,7 @@ package com.example.demo.entities;
 import javax.persistence.*;
 
 @Entity
-@
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "vehicle")
 public class Vehicle {
     @Id
