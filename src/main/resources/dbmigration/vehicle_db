@@ -1,0 +1,41 @@
+create database vehicle_db;
+use vehicle_db;
+
+CREATE TABLE vehicle(
+id INT PRIMARY KEY AUTO_INCREMENT,
+brand VARCHAR(30),
+model VARCHAR(30),
+price INT
+);
+
+CREATE TABLE car(
+id INT PRIMARY KEY AUTO_INCREMENT,
+topSpeed INT,
+carShape VARCHAR(30),
+gearType VARCHAR(30),
+CONSTRAINT car_vehicle_fk FOREIGN KEY (id)references vehicle(id) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+CREATE TABLE tractor(
+id INT PRIMARY KEY AUTO_INCREMENT,
+cylindricalCapacity INT,
+CONSTRAINT tractor_vehicle_fk FOREIGN KEY (id)references vehicle(id) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+CREATE TABLE car(
+id INT PRIMARY KEY AUTO_INCREMENT,
+topSpeed INT,
+motorcycleShape VARCHAR(30),
+CONSTRAINT motorcycle_vehicle_fk FOREIGN KEY (id)references vehicle(id) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+CREATE TABLE boat(
+id INT PRIMARY KEY AUTO_INCREMENT,
+horsePower VARCHAR(30),
+CONSTRAINT boat_vehicle_fk FOREIGN KEY (id)references vehicle(id) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+CREATE TABLE bicycle(
+id INT PRIMARY KEY AUTO_INCREMENT,
+CONSTRAINT bicycle_vehicle_fk FOREIGN KEY (id)references vehicle(id) ON DELETE NO ACTION ON UPDATE NO ACTION
+);

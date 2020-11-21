@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import com.example.demo.entities.enums.MotorcycleShape;
+
 public class Motorcycle extends Vehicle {
     private int topSpeed;
     private MotorcycleShape motorcycleShape;

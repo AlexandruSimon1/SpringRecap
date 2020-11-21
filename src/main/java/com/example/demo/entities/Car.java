@@ -1,6 +1,9 @@
 package com.example.demo.entities;
 
 
+import com.example.demo.entities.enums.CarShape;
+import com.example.demo.entities.enums.GearType;
+
 public class Car extends Vehicle{
     private int topSpeed;
     private GearType gearType;
