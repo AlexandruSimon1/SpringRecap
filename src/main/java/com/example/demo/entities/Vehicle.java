@@ -3,12 +3,13 @@ package com.example.demo.entities;
 import javax.persistence.*;
 
 @Entity
+@SequenceGenerator(name="seq", initialValue=5, allocationSize=100)
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "vehicle")
 public class Vehicle {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
+    private Integer id;
     private String brand;
     private String model;
     private int price;
@@ -22,11 +23,11 @@ public class Vehicle {
         this.price = price;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

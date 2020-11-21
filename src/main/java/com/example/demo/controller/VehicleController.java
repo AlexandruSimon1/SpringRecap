@@ -13,6 +13,10 @@ import java.util.Optional;
 public class VehicleController {
     private final VehicleRepository vehicleRepository;
 
+    public VehicleController(VehicleRepository vehicleRepository) {
+        this.vehicleRepository = vehicleRepository;
+    }
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Vehicle> getAllVehicle() {
@@ -27,8 +31,8 @@ public class VehicleController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createVehicle(@RequestBody Vehicle vehicle) {
-        vehicleRepository.save(vehicle);
+    public Vehicle createVehicle(@RequestBody Vehicle vehicle){
+        return vehicleRepository.save(vehicle);
     }
 
     @PutMapping(value = "/{id}")
@@ -50,9 +54,5 @@ public class VehicleController {
     @ResponseStatus(HttpStatus.OK)
     public void deleteVehicle(@PathVariable("id") int id){
         vehicleRepository.deleteById(id);
-    }
-
-    public VehicleController(VehicleRepository vehicleRepository) {
-        this.vehicleRepository = vehicleRepository;
     }
 }
