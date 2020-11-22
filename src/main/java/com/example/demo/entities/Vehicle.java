@@ -3,7 +3,7 @@ package com.example.demo.entities;
 import javax.persistence.*;
 
 @Entity
-@SequenceGenerator(name="seq", initialValue=5, allocationSize=100)
+//@SequenceGenerator(name="seq", initialValue=0, allocationSize=100)
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "vehicle")
 public class Vehicle {
