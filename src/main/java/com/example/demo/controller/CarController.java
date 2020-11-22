@@ -17,6 +17,15 @@ public class CarController {
         this.carRepository = carRepository;
     }
 
+    @GetMapping(value = "/order{order}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Car> orderByPrice(@PathVariable String order) {
+        if (order.equals("desc")) {
+            return carRepository.findByOrderByPriceDesc();
+        }
+        return carRepository.findByOrderByPriceAsc();
+    }
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Car> getAllCars() {

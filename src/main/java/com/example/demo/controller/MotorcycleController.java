@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entities.Motorcycle;
+import com.example.demo.entities.enums.MotorcycleShape;
 import com.example.demo.repository.MotorcycleRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,16 @@ public class MotorcycleController {
 
     public MotorcycleController(MotorcycleRepository motorcycleRepository) {
         this.motorcycleRepository = motorcycleRepository;
+    }
+
+    @GetMapping(value = "/sort{order}/{motorcycleshape}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Motorcycle> orderByTopSpeed(@PathVariable String motorcycleshape, @PathVariable String order) {
+        MotorcycleShape motorcycleShape = MotorcycleShape.valueOf(motorcycleshape.toUpperCase());
+        if (order.equals("desc")) {
+            return motorcycleRepository.findByMotorcycleShapeLikeOrderByTopSpeedDesc(motorcycleShape);
+        }
+        return motorcycleRepository.findByMotorcycleShapeLikeOrderByTopSpeedAsc(motorcycleShape);
     }
 
     @GetMapping

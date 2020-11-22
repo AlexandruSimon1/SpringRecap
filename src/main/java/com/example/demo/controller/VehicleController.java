@@ -39,7 +39,29 @@ public class VehicleController {
         count.put("Motorcycle", motorcycleRepository.count());
         count.put("Bicycle", bicycleRepository.count());
         count.put("Boat", boatRepository.count());
+        count.put("Total", vehicleRepository.count());
         return count;
+    }
+
+    @GetMapping(value = "/brand")
+    @ResponseStatus(HttpStatus.OK)
+    public HashMap<String, Integer> countByBrand() {
+        List<Vehicle> allVehicle = vehicleRepository.findAll();
+        HashMap<String, Integer> countBrand = new HashMap<>();
+        for (Vehicle vehicle : allVehicle) {
+            if (countBrand.get(vehicle.getBrand()) == null) {
+                countBrand.put(vehicle.getBrand(), 1);
+            } else {
+                countBrand.put(vehicle.getBrand(), countBrand.get(vehicle.getBrand()) + 1);
+            }
+        }
+        return countBrand;
+    }
+
+    @GetMapping(value = "/brand/{brand}")
+    @ResponseStatus(HttpStatus.OK)
+    public String countByBrand(@PathVariable String brand) {
+        return brand + " : " + vehicleRepository.countByBrand(brand);
     }
 
     @GetMapping
